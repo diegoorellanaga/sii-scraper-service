@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  sii_scraper:
+    build:
+      context: .
+    container_name: sii_scraper_service
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
