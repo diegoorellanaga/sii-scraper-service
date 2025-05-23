@@ -28,6 +28,8 @@ def api_obtener_rcv():
         data = obtener_rcv(rut, clave, mes, anho, tipo)
         return jsonify(data)
     except Exception as e:
+        import traceback
+        traceback.print_exc()
         return jsonify({"error": str(e)}), 500
 
 # if __name__ == "__main__":

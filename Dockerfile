@@ -42,5 +42,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Install ONLY Chromium (not Firefox/WebKit)
 RUN playwright install chromium
 
-EXPOSE 5000
+EXPOSE $PORT
 CMD ["python", "main.py"]
