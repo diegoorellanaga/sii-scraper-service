@@ -31,7 +31,7 @@ def loginSii(page, url, rut, clave, id_boton_login):
     page.click(id_boton_login)
 
     try:
-        page.wait_for_url(url, timeout=10000)
+        page.wait_for_url(url, timeout=120000)
     except TimeoutError:
         print("No se redireccionó después de login, pero seguimos...")
 
@@ -63,7 +63,7 @@ def apretarRegistroCompraVenta(page, texto_link):
 
 def entrarRegistroCompraVentaDetalle(page, selector_accordion, texto_boton):
     try:
-        page.wait_for_selector(selector_accordion, timeout=15000)
+        page.wait_for_selector(selector_accordion, timeout=30000)
         print("✅ Elemento encontrado!")
     except:
         print("❌ Falló. Posibles causas:")
@@ -172,7 +172,7 @@ def getDownloadPath(page, boton_nombre):
     """
     try:
         # Intentar encontrar el botón con timeout corto (2 segundos)
-        boton = page.wait_for_selector(f'button:has-text("{boton_nombre}")', timeout=2000)
+        boton = page.wait_for_selector(f'button:has-text("{boton_nombre}")', timeout=10000)
     except:
         print(f"⚠️ No se encontró el botón '{boton_nombre}'.")
         return None
@@ -280,7 +280,7 @@ def obtener_rcv(rut, clave, mes, anho, tipo="compra"):
         page = browser.new_page()
 
         page = loginSii(page, "https://misiir.sii.cl/cgi_misii/siihome.cgi", rut, clave, "#bt_ingresar")
-        page = quitarPopup(page, "#btnActualizarMasTarde", timeout=2000)
+        page = quitarPopup(page, "#btnActualizarMasTarde", timeout=10000)
         page = apretarRegistroCompraVenta(page, "Registro de Compras y Ventas")
 
         if page is None:
